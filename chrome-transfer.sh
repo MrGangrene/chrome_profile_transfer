@@ -51,7 +51,7 @@ echo "==========================================================================
 echo First we are going to create a backup of both folders. juuuuust in case we break it.....
 echo You can find a backup tarball of both the old profile folder and the new profile folder on the Desktop in a folder called "Chrome Backup"
 echo "Now let's do it!!"
-echo "=========================================================================================================================================\n"
+echo -e "=========================================================================================================================================\n"
 
 mkdir "$backup_folder"
 echo -e "Creating backup files...\n"
