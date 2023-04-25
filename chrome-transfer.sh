@@ -60,7 +60,7 @@ echo "(This can take a while if the Google Chrome profile is large)"
 tar Pczf "$backup_folder"/default_profile.tar.gz "$old_profile_dir"
 tar Pczf "$backup_folder"/new_profile.tar.gz "$new_profile_dir"
 
-rsync -av --include='*' --recursive "$old_profile_dir" "$new_profile_dir"
+rsync -avq --include='*' --recursive "$old_profile_dir" "$new_profile_dir"
 
 echo "All done! Please open Google Chrome and have a look!"
 open -a "Google Chrome"
