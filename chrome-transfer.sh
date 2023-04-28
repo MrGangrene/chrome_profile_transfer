@@ -26,7 +26,7 @@ for folder in "$chrome_dir"Profile*/; do
 done
 
 if [ $(echo -e "$new_profile_dir" | wc -l) -eq 2 ]; then
-  new_profile_dir=$(echo -e "$new_profile_dir" | cut -d ")" -f 2)
+  new_profile_dir=$(echo -e "$new_profile_dir" | cut -d ")" -f 2 | sed 's/^[^\/]*\///;s/\(.*\)/\/\1/')
 elif [ $(echo -e "$new_profile_dir" | wc -l) -gt 2 ]; then
   echo -e "Found multiple new profile directories: \n"
   echo -e "$new_profile_dir"
