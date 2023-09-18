@@ -49,8 +49,8 @@ echo This is the new folder: ==="$new_profile_dir"===
 echo -e This is the old folder ==="$old_profile_dir"===
 echo ""
 echo "========================================================================================================================================="
-echo First we are going to create a backup of both folders. juuuuust in case we break it.....
-echo You can find a backup tarball of both the old profile folder and the new profile folder on the Desktop in a folder called "Chrome Backup"
+echo "First we are going to create a backup of both folders. juuuuust in case we break it....."
+echo "You can find a backup tarball of both the old profile folder and the new profile folder on the Desktop in a folder called "Chrome Backup"
 echo "Now let's do it!!"
 echo -e "=========================================================================================================================================\n"
 
