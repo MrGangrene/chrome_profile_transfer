@@ -18,17 +18,16 @@ find "/Users/$(id -un)/Library/Application Support/Google/Chrome/" -type d -name
 echo ""
 
 for folder in "$chrome_dir"Profile*/; do
-  modification_date=$(stat -f "%m" "$folder")
-  if [[ $modification_date -gt $(date -j -f "%Y-%m-%d" "2023-04-19" "+%s") ]]; then
-    new_profile_dir+="$i) $folder\n"
-    ((i++))
-  fi
+  modification_date=$(stat -f %Sm "$folder")
+  new_profile_dir+="$i) $folder - Created on: $modification_date\n"
+  ((i++))
 done
 
 if [ $(echo -e "$new_profile_dir" | wc -l) -eq 2 ]; then
   new_profile_dir=$(echo -e "$new_profile_dir" | cut -d ")" -f 2 | sed 's/^[^\/]*\///;s/\(.*\)/\/\1/')
 elif [ $(echo -e "$new_profile_dir" | wc -l) -gt 2 ]; then
-  echo -e "Found multiple new profile directories: \n"
+  clear
+  echo -e "\n Found multiple new profile directories: \n"
   echo -e "$new_profile_dir"
   
   while true; do
@@ -36,7 +35,7 @@ elif [ $(echo -e "$new_profile_dir" | wc -l) -gt 2 ]; then
     read -p "Please choose from this menu by just typing the number associated with the correct folder: " menu_number
     if [ -n "$(echo -e "$new_profile_dir" | grep "^$menu_number)")" ]; then
       new_profile_dir=$(echo -e "$new_profile_dir" | grep "^$menu_number)" | cut -d ")" -f 2 | sed 's/^[^\/]*\///;s/\(.*\)/\/\1/')
-      #don't look at this sed.... it's ugly but it somehow works... (thanks ChatGPT :P)
+      # don't look at this sed.... it's ugly but it somehow works... (thanks ChatGPT :P)
       break
     else
       echo -e "Invalid menu option. Please choose from the following options: \n"
@@ -49,7 +48,7 @@ echo This is the new folder: ==="$new_profile_dir"===
 echo -e This is the old folder ==="$old_profile_dir"===
 echo ""
 echo "========================================================================================================================================="
-echo "First we are going to create a backup of both folders. juuuuust in case we break it....."
+echo "First we are going to create a backup of both folders. just in case we break it!....."
 echo "You can find a backup tarball of both the old profile folder and the new profile folder on the Desktop in a folder called "Chrome Backup"
 echo "Now let's do it!!"
 echo -e "=========================================================================================================================================\n"
